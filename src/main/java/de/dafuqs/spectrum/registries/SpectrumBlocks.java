@@ -7,6 +7,7 @@ import de.dafuqs.spectrum.blocks.amphora.*;
 import de.dafuqs.spectrum.blocks.block_flooder.*;
 import de.dafuqs.spectrum.blocks.boom.*;
 import de.dafuqs.spectrum.blocks.bottomless_bundle.*;
+import de.dafuqs.spectrum.blocks.candles.ScentedCandleBlock;
 import de.dafuqs.spectrum.blocks.chests.*;
 import de.dafuqs.spectrum.blocks.cinderhearth.*;
 import de.dafuqs.spectrum.blocks.conditional.*;
@@ -935,7 +936,9 @@ public class SpectrumBlocks {
 	public static final Block CRACKED_END_PORTAL_FRAME = new CrackedEndPortalFrameBlock(settings(MapColor.PALE_PURPLE, BlockSoundGroup.GLASS, -1.0F, 3600000.0F).instrument(Instrument.BASEDRUM).luminance((state) -> 1));
 	public static final Block LAVA_SPONGE = new LavaSpongeBlock(FabricBlockSettings.copyOf(Blocks.SPONGE).mapColor(MapColor.ORANGE));
 	public static final Block WET_LAVA_SPONGE = new WetLavaSpongeBlock(FabricBlockSettings.copyOf(Blocks.WET_SPONGE).mapColor(MapColor.ORANGE).luminance(9).emissiveLighting(SpectrumBlocks::always).postProcess(SpectrumBlocks::always));
-
+	public static final Block ALLURING_CANDLE = new CandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE));
+	public static final Block SCENTED_CANDLE = new ScentedCandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE));
+	public static final Block SOPORIFIC_CANDLE = new CandleBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CANDLE));
 	public static final Block LIGHT_LEVEL_DETECTOR = new BlockLightDetectorBlock(FabricBlockSettings.copyOf(Blocks.DAYLIGHT_DETECTOR));
 	public static final Block WEATHER_DETECTOR = new WeatherDetectorBlock(FabricBlockSettings.copyOf(Blocks.DAYLIGHT_DETECTOR));
 	public static final Block ITEM_DETECTOR = new ItemDetectorBlock(FabricBlockSettings.copyOf(Blocks.DAYLIGHT_DETECTOR));
@@ -1539,6 +1542,11 @@ public class SpectrumBlocks {
 		registerBlockWithItem("upgrade_yield2", UPGRADE_YIELD2, new UpgradeBlockItem(UPGRADE_YIELD2, IS.of(16, Rarity.RARE), "upgrade_yield2"), DyeColor.LIGHT_GRAY);
 		registerBlockWithItem("upgrade_experience", UPGRADE_EXPERIENCE, new UpgradeBlockItem(UPGRADE_EXPERIENCE, IS.of(16), "upgrade_experience"), DyeColor.LIGHT_GRAY);
 		registerBlockWithItem("upgrade_experience2", UPGRADE_EXPERIENCE2, new UpgradeBlockItem(UPGRADE_EXPERIENCE2, IS.of(16, Rarity.UNCOMMON), "upgrade_experience2"), DyeColor.LIGHT_GRAY);
+
+		registerBlockWithItem("alluring_candle", ALLURING_CANDLE, IS.of(), DyeColor.GREEN);
+		registerBlockWithItem("scented_candle", SCENTED_CANDLE, IS.of(), DyeColor.GREEN);
+		registerBlockWithItem("soporific_candle", SOPORIFIC_CANDLE, IS.of(), DyeColor.GREEN);
+
 
 		registerPastelNetworkNodes(IS.of(16));
 		registerStoneBlocks(IS.of());
@@ -2994,6 +3002,10 @@ public class SpectrumBlocks {
 		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.ITEM_ROUNDEL, RenderLayer.getCutout());
 
 		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.MEMORY, RenderLayer.getTranslucent());
+
+		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.ALLURING_CANDLE, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.SCENTED_CANDLE, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.SOPORIFIC_CANDLE, RenderLayer.getCutout());
 
 		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.JADE_VINE_ROOTS, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SpectrumBlocks.JADE_VINE_BULB, RenderLayer.getCutout());

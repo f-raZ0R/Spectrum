@@ -14,6 +14,8 @@ public class SpectrumPathNodeTypes {
 		LandPathNodeTypesRegistry.register(SpectrumBlocks.BRISTLE_SPROUTS, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
 		LandPathNodeTypesRegistry.register(SpectrumBlocks.SAWBLADE_HOLLY_BUSH, PathNodeType.DAMAGE_OTHER, PathNodeType.DANGER_OTHER);
 
+		LandPathNodeTypesRegistry.register(SpectrumBlocks.SCENTED_CANDLE, null, PathNodeType.DAMAGE_OTHER);
+
 		LandPathNodeTypesRegistry.register(SpectrumBlocks.MUD, PathNodeType.WATER, PathNodeType.WATER_BORDER);
 		LandPathNodeTypesRegistry.register(SpectrumBlocks.LIQUID_CRYSTAL, PathNodeType.WATER, PathNodeType.WATER_BORDER);
 	}
