@@ -15,7 +15,7 @@
     "collected_bismuth": {
       "trigger": "revelationary:advancement_gotten",
       "conditions": {
-        "advancement_identifier": "spectrum:lategame/collect_bismuth"
+        "advancement_identifier": "spectrum:lategame/collect_bismuth_crystal"
       }
     }
   }

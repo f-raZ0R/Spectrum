@@ -1,7 +1,6 @@
 package de.dafuqs.spectrum.items.misc;
 
 import de.dafuqs.spectrum.helpers.*;
-import de.dafuqs.spectrum.items.*;
 import de.dafuqs.spectrum.particle.*;
 import de.dafuqs.spectrum.registries.*;
 import net.minecraft.item.*;
@@ -10,10 +9,10 @@ import net.minecraft.util.*;
 
 import java.util.*;
 
-public class AshItem extends ItemWithTooltip {
+public class AshItem extends Item {
 	
-	public AshItem(Settings settings, String tooltip) {
-		super(settings, tooltip);
+	public AshItem(Settings settings) {
+		super(settings);
 	}
 	
 	@Override

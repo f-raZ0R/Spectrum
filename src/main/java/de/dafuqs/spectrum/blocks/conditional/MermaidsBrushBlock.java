@@ -1,7 +1,6 @@
 package de.dafuqs.spectrum.blocks.conditional;
 
 import de.dafuqs.revelationary.api.revelations.*;
-import de.dafuqs.spectrum.*;
 import de.dafuqs.spectrum.blocks.*;
 import de.dafuqs.spectrum.registries.*;
 import net.minecraft.block.*;
@@ -25,8 +24,6 @@ import java.util.*;
 public class MermaidsBrushBlock extends PlantBlock implements Fertilizable, RevelationAware, FluidLogging.SpectrumFluidFillable {
 
 	private static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-	
-	public static final Identifier UNLOCK_IDENTIFIER = SpectrumCommon.locate("milestones/reveal_mermaids_brush");
 	
 	public static final EnumProperty<FluidLogging.State> LOGGED = FluidLogging.ANY_EXCLUDING_NONE;
 	public static final IntProperty AGE = Properties.AGE_7;
@@ -56,7 +53,7 @@ public class MermaidsBrushBlock extends PlantBlock implements Fertilizable, Reve
 
 	@Override
 	public Identifier getCloakAdvancementIdentifier() {
-		return UNLOCK_IDENTIFIER;
+		return SpectrumAdvancements.REVEAL_MERMAIDS_BRUSH;
 	}
 	
 	@Override
@@ -160,7 +157,7 @@ public class MermaidsBrushBlock extends PlantBlock implements Fertilizable, Reve
 		float chance = state.get(LOGGED) == FluidLogging.State.LIQUID_CRYSTAL ? 1.0F : 0.5F;
 		int nextAge = age + random.nextBetween(1, (int) Math.ceil(attempts * chance));
 		
-		if (nextAge >= 7) {
+		if (nextAge >= 8) {
 			ItemEntity pearlEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, new ItemStack(SpectrumItems.MERMAIDS_GEM, 1));
 			world.spawnEntity(pearlEntity);
 		}

@@ -1,7 +1,7 @@
 package de.dafuqs.spectrum.api.energy;
 
 import com.google.common.collect.*;
-import de.dafuqs.spectrum.api.status_effect.Incurable;
+import de.dafuqs.spectrum.api.status_effect.*;
 import de.dafuqs.spectrum.helpers.*;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.effect.*;
@@ -111,7 +111,7 @@ public class InkPoweredStatusEffectInstance {
 	}
 	
 	public static void buildTooltip(List<Text> tooltip, List<InkPoweredStatusEffectInstance> effects, MutableText attributeModifierText, boolean showDuration) {
-		if (effects.size() > 0) {
+		if (!effects.isEmpty()) {
 			List<Pair<EntityAttribute, EntityAttributeModifier>> attributeModifiers = Lists.newArrayList();
 			for (InkPoweredStatusEffectInstance entry : effects) {
 				if (entry.isUnidentifiable()) {
@@ -120,8 +120,16 @@ public class InkPoweredStatusEffectInstance {
 				}
 
 				StatusEffectInstance effect = entry.getStatusEffectInstance();
-				InkCost cost = entry.getInkCost();
+				if (effect == null) { // serialization error or removed effect
+					continue;
+				}
 				
+				InkCost cost = entry.getInkCost();
+
+				if (effect == null) {
+					tooltip.add(Text.translatable("item.spectrum.potion.tooltip.invalid"));
+					continue;
+				}
 				MutableText mutableText = Text.translatable(effect.getTranslationKey());
 				if (effect.getAmplifier() > 0) {
 					mutableText = Text.translatable("potion.withAmplifier", mutableText, Text.translatable("potion.potency." + effect.getAmplifier()));
@@ -130,7 +138,7 @@ public class InkPoweredStatusEffectInstance {
 					mutableText = Text.translatable("potion.withDuration", mutableText, StatusEffectUtil.getDurationText(effect, 1.0F));
 				}
 				mutableText.formatted(effect.getEffectType().getCategory().getFormatting());
-				mutableText.append(Text.translatable("spectrum.tooltip.ink_cost", Support.getShortenedNumberString(cost.getCost()), cost.getColor().getInkName()).formatted(Formatting.GRAY));
+				mutableText.append(Text.translatable("spectrum.tooltip.ink_cost", Support.getShortenedNumberString(cost.getCost()), cost.getColor().getColoredInkName()).formatted(Formatting.GRAY));
 				if (entry.isIncurable()) {
 					mutableText.append(Text.translatable("item.spectrum.potion.tooltip.incurable"));
 				}

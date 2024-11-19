@@ -3,7 +3,7 @@
   "icon": "spectrum:effulgent_feather",
   "condition": {
     "type": "modonomicon:advancement",
-    "advancement_id": "spectrum:unlocks/blocks/kindling_memory"
+    "advancement_id": "spectrum:pluck_effulgent_feather"
   },
   "category": "spectrum:creating_life",
   "hide_while_locked": true,

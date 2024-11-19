@@ -1,5 +1,6 @@
 {
-  "name": "book.spectrum.guidebook.hints.preservation_ruins.name",
+  "name": "book.spectrum.guidebook.idea",
+  "description": "book.spectrum.guidebook.ideas.preservation_ruins.name",
   "category": "spectrum:general",
   "hide_while_locked": true,
   "parents": [],
@@ -7,7 +8,7 @@
   "background_v_index": 5,
   "x": -1,
   "y": 7,
-  "icon": "minecraft:writable_book",
+  "icon": "spectrum:textures/gui/guidebook/icons/idea.png",
   "condition": {
     "type": "modonomicon:advancement",
     "advancement_id": "spectrum:midgame/break_decayed_bedrock"
@@ -17,17 +18,17 @@
   "pages": [
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.where_to_find",
+      "title": "book.spectrum.guidebook.ideas.where_to_find",
       "completion_advancement": "spectrum:triggers/hints/preservation_ruins_page0",
       "cost": {
         "item": "spectrum:refined_azurite",
         "count": 4
       },
-      "text": "book.spectrum.guidebook.hints.preservation_ruins.page0.text"
+      "text": "book.spectrum.guidebook.ideas.preservation_ruins.page0.text"
     },
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.preservation_ruins.page1.title",
+      "title": "book.spectrum.guidebook.ideas.preservation_ruins.page1.title",
       "condition": {
         "type": "modonomicon:advancement",
         "advancement_id": "spectrum:find_preservation_ruins"
@@ -37,11 +38,11 @@
         "item": "spectrum:refined_azurite",
         "count": 12
       },
-      "text": "book.spectrum.guidebook.hints.preservation_ruins.page1.text"
+      "text": "book.spectrum.guidebook.ideas.preservation_ruins.page1.text"
     },
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.preservation_ruins.page2.title",
+      "title": "book.spectrum.guidebook.ideas.preservation_ruins.page2.title",
       "condition": {
         "type": "modonomicon:advancement",
         "advancement_id": "spectrum:find_preservation_ruins"
@@ -51,11 +52,11 @@
         "item": "spectrum:refined_azurite",
         "count": 12
       },
-      "text": "book.spectrum.guidebook.hints.preservation_ruins.page2.text"
+      "text": "book.spectrum.guidebook.ideas.preservation_ruins.page2.text"
     },
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.preservation_ruins.page3.title",
+      "title": "book.spectrum.guidebook.ideas.preservation_ruins.page3.title",
       "condition": {
         "type": "modonomicon:advancement",
         "advancement_id": "spectrum:find_preservation_ruins"
@@ -65,7 +66,7 @@
         "item": "spectrum:refined_azurite",
         "count": 12
       },
-      "text": "book.spectrum.guidebook.hints.preservation_ruins.page3.text"
+      "text": "book.spectrum.guidebook.ideas.preservation_ruins.page3.text"
     }
   ]
 }

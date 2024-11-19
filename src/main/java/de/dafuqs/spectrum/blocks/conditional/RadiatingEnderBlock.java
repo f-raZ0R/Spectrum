@@ -1,7 +1,6 @@
 package de.dafuqs.spectrum.blocks.conditional;
 
 import de.dafuqs.revelationary.api.revelations.*;
-import de.dafuqs.spectrum.*;
 import de.dafuqs.spectrum.registries.*;
 import net.minecraft.block.*;
 import net.minecraft.entity.*;
@@ -21,7 +20,7 @@ public class RadiatingEnderBlock extends Block implements RevelationAware {
 	
 	@Override
 	public Identifier getCloakAdvancementIdentifier() {
-		return SpectrumCommon.locate("milestones/reveal_radiating_ender");
+		return SpectrumAdvancements.REVEAL_RADIATING_ENDER;
 	}
 	
 	@Override
@@ -36,7 +35,7 @@ public class RadiatingEnderBlock extends Block implements RevelationAware {
 
 	@Override
 	public List<ItemStack> getDroppedStacks(BlockState state, LootContextParameterSet.Builder builder) {
-		Entity entity = builder.get(LootContextParameters.THIS_ENTITY);
+		Entity entity = builder.getOptional(LootContextParameters.THIS_ENTITY);
 		if (entity instanceof EndermanEntity) {
 			return List.of(SpectrumBlocks.RADIATING_ENDER.asItem().getDefaultStack());
 		}

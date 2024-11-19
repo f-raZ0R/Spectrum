@@ -43,7 +43,7 @@ public class BloodstoneGlassAmpouleItem extends BaseGlassAmpouleItem implements 
 			return false;
 		}
 		if (!world.isClient) {
-			LightSpearEntity.summonBarrage(attacker.getWorld(), attacker, target);
+			LightSpearEntity.summonBarrage(attacker.getWorld(), attacker, target, LightShardBaseEntity.MONSTER_TARGET);
 		}
 		return true;
 	}

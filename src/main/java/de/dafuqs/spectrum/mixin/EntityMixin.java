@@ -3,6 +3,7 @@ package de.dafuqs.spectrum.mixin;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import de.dafuqs.spectrum.cca.*;
 import de.dafuqs.spectrum.enchantments.InexorableEnchantment;
+import de.dafuqs.spectrum.mixin.accessors.*;
 import de.dafuqs.spectrum.registries.*;
 import de.dafuqs.spectrum.status_effects.*;
 import net.minecraft.enchantment.*;
@@ -76,7 +77,11 @@ public abstract class EntityMixin {
 	@ModifyReturnValue(method = "getPose", at = @At("RETURN"))
 	public EntityPose spectrum$forceSleepPose(EntityPose original) {
 		var entity = (Entity) (Object) this;
-		if (entity instanceof LivingEntity living && !(entity instanceof PlayerEntity) && (living.hasStatusEffect(SpectrumStatusEffects.ETERNAL_SLUMBER) || living.hasStatusEffect(SpectrumStatusEffects.FATAL_SLUMBER)))
+
+		if (!(entity instanceof LivingEntity living) || ((LivingEntityAccessor) living).getActiveStatusEffects() == null)
+			return original;
+
+		if (!(entity instanceof PlayerEntity) && (living.hasStatusEffect(SpectrumStatusEffects.ETERNAL_SLUMBER) || living.hasStatusEffect(SpectrumStatusEffects.FATAL_SLUMBER)))
 			return EntityPose.SLEEPING;
 
 		return original;

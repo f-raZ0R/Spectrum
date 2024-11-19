@@ -85,6 +85,22 @@
       "text": "book.spectrum.guidebook.dragonbone.page6.text",
       "title": "book.spectrum.guidebook.smelting_back",
       "recipe_id": "spectrum:cinderhearth/bone_ash_unsmelting"
+    },
+    {
+      "type": "spectrum:anvil_crushing",
+      "title": "container.spectrum.rei.anvil_crushing.title",
+      "text": "book.spectrum.guidebook.dragonbone.anvil_crushing.text",
+      "recipe_id": "spectrum:anvil_crushing/bone_meal_from_dragonbone"
+    },
+    {
+      "type": "spectrum:dragonrot_converting",
+      "condition": {
+        "type": "modonomicon:advancement",
+        "advancement_id": "spectrum:break_cracked_dragonbone"
+      },
+      "title": "book.spectrum.guidebook.item_conversion",
+      "text": "book.spectrum.guidebook.dragonbone.dragonrot_converting.text",
+      "recipe_id": "spectrum:dragonrot_converting/ash_from_bone_ash"
     }
   ]
 }

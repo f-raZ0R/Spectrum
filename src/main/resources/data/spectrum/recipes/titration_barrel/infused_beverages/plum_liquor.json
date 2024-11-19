@@ -101,5 +101,5 @@
       "Color": 13255032
     }
   },
-  "required_advancement": "spectrum:hidden/collect_fissure_plum"
+  "required_advancement": "spectrum:unlocks/food/fissure_plum_titration"
 }

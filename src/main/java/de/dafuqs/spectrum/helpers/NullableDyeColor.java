@@ -93,7 +93,7 @@ public enum NullableDyeColor implements StringIdentifiable {
 	public static void addTooltip(ItemStack stack, List<Text> tooltip) {
 		NullableDyeColor color = NullableDyeColor.get(stack.getNbt());
 		if (color != NullableDyeColor.NONE) {
-			tooltip.add(InkColor.ofDyeColor(color.dyeColor).getInkName());
+			tooltip.add(InkColor.ofDyeColor(color.dyeColor).getColoredInkName());
 		}
 	}
 	

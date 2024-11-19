@@ -50,7 +50,7 @@ public class InkDrainTrinketItem extends SpectrumTrinketItem implements InkStora
 				pow++;
 			} while (storedInk >= nextStepInk);
 			
-			tooltip.add(Text.translatable("spectrum.tooltip.ink_drain.tooltip.ink_for_next_step", storedInk, inkStorage.getStoredColor().getInkName(), Support.getShortenedNumberString(nextStepInk - storedInk)).formatted(Formatting.GRAY));
+			tooltip.add(Text.translatable("spectrum.tooltip.ink_drain.tooltip.ink_for_next_step", storedInk, inkStorage.getStoredColor().getColoredInkName(), Support.getShortenedNumberString(nextStepInk - storedInk)).formatted(Formatting.GRAY));
 		}
 	}
 	

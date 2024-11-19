@@ -25,14 +25,14 @@ public class MalachiteGlassAmpouleItem extends BaseGlassAmpouleItem implements I
     public boolean trigger(ItemStack stack, LivingEntity attacker, @Nullable LivingEntity target) {
         List<StatusEffectInstance> e = new ArrayList<>();
         if (attacker instanceof PlayerEntity player) {
-            List<InkPoweredStatusEffectInstance> effects = getEffects(stack);
+			List<InkPoweredStatusEffectInstance> effects = InkPoweredPotionFillable.getEffects(stack);
             for (InkPoweredStatusEffectInstance effect : effects) {
                 if (InkPowered.tryDrainEnergy(player, effect.getInkCost())) {
                     e.add(effect.getStatusEffectInstance());
                 }
             }
         }
-        LightMineEntity.summonBarrage(attacker.getWorld(), attacker, target, e);
+		LightMineEntity.summonBarrage(attacker.getWorld(), attacker, target, LightShardBaseEntity.MONSTER_TARGET, e);
         return true;
     }
     
@@ -50,7 +50,7 @@ public class MalachiteGlassAmpouleItem extends BaseGlassAmpouleItem implements I
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         tooltip.add(Text.translatable("item.spectrum.malachite_glass_ampoule.tooltip").formatted(Formatting.GRAY));
-        appendPotionFillableTooltip(stack, tooltip, Text.translatable("item.spectrum.malachite_glass_ampoule.tooltip"), false);
+        appendPotionFillableTooltip(stack, tooltip, Text.translatable("item.spectrum.malachite_glass_ampoule.tooltip.when_hit"), false);
     }
     
 }

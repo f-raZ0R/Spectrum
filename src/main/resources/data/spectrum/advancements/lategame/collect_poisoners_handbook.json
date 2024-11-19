@@ -1,5 +1,5 @@
 {
-  "parent": "spectrum:lategame/collect_nectardew",
+  "parent": "spectrum:lategame/enter_strange_preservation_ruin",
   "display": {
     "icon": {
       "item": "spectrum:poisoners_handbook"
@@ -22,7 +22,7 @@
     "gotten_previous": {
       "trigger": "revelationary:advancement_gotten",
       "conditions": {
-        "advancement_identifier": "spectrum:lategame/collect_nectardew"
+        "advancement_identifier": "spectrum:lategame/enter_strange_preservation_ruin"
       }
     }
   }

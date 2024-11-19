@@ -57,7 +57,9 @@ public class EverpromiseRibbonItem extends Item implements PrioritizedEntityInte
 					}
 				}
 				
-				stack.decrement(1);
+				if (!user.isCreative()) {
+					stack.decrement(1);
+				}
 			}
 			
 			return ActionResult.success(world.isClient);

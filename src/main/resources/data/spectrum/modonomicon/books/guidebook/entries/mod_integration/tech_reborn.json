@@ -29,9 +29,15 @@
     },
     {
       "type": "spectrum:cinderhearth_smelting",
-      "title": "book.spectrum.guidebook.mod_integration.tech_reborn.page1.title",
+      "title": "book.spectrum.guidebook.mod_integration.tech_reborn.refined_iron_ingot.title",
       "recipe_id": "spectrum:mod_integration/tech_reborn/refined_iron_ingot",
-      "text": "book.spectrum.guidebook.mod_integration.tech_reborn.page1.text"
+      "text": "book.spectrum.guidebook.mod_integration.tech_reborn.refined_iron_ingot.text"
+    },
+    {
+      "type": "spectrum:cinderhearth_smelting",
+      "title": "book.spectrum.guidebook.mod_integration.tech_reborn.advanced_alloy_ingot.title",
+      "recipe_id": "spectrum:mod_integration/tech_reborn/advanced_alloy_ingot",
+      "text": "book.spectrum.guidebook.mod_integration.tech_reborn.advanced_alloy_ingot.text"
     },
     {
       "type": "modonomicon:spotlight",
@@ -50,10 +56,6 @@
       "title": "book.spectrum.guidebook.mod_integration.tech_reborn.page3.title",
       "item": {
         "item": "minecraft:amethyst_shard"
-      },
-      "condition": {
-        "type": "modonomicon:advancement",
-        "advancement_id": "spectrum:spectrum"
       },
       "text": "book.spectrum.guidebook.mod_integration.tech_reborn.page3.text"
     }

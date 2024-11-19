@@ -4,15 +4,14 @@ import de.dafuqs.spectrum.particle.*;
 import de.dafuqs.spectrum.registries.*;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.*;
-import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.*;
 import net.minecraft.particle.*;
 import net.minecraft.registry.tag.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.*;
 import net.minecraft.world.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.*;
 
 public class DragonrotFluidBlock extends SpectrumFluidBlock {
 	
@@ -49,7 +48,7 @@ public class DragonrotFluidBlock extends SpectrumFluidBlock {
 		} else if (otherState.isIn(FluidTags.LAVA)) {
 			return Blocks.BLACKSTONE.getDefaultState();
 		} else if (otherState.isIn(SpectrumFluidTags.MUD)) {
-			return Blocks.MUD.getDefaultState();
+			return Blocks.COARSE_DIRT.getDefaultState();
 		} else if (otherState.isIn(SpectrumFluidTags.LIQUID_CRYSTAL)) {
 			return SpectrumBlocks.ROTTEN_GROUND.getDefaultState();
 		} else if (otherState.isIn(SpectrumFluidTags.MIDNIGHT_SOLUTION)) {

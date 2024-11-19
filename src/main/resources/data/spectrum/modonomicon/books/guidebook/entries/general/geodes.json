@@ -3,7 +3,7 @@
   "icon": "minecraft:amethyst_cluster",
   "category": "spectrum:general",
   "hide_while_locked": false,
-  "turnin": "spectrum:spectrum",
+  "turnin": "spectrum:collect_any_basic_shard",
   "parents": [],
   "background_u_index": 0,
   "background_v_index": 0,
@@ -23,7 +23,7 @@
       "type": "modonomicon:text",
       "condition": {
         "type": "modonomicon:advancement",
-        "advancement_id": "spectrum:spectrum"
+        "advancement_id": "spectrum:collect_any_basic_shard"
       },
       "text": "book.spectrum.guidebook.geodes.page1.text"
     },
@@ -31,7 +31,7 @@
       "type": "modonomicon:multiblock",
       "condition": {
         "type": "modonomicon:advancement",
-        "advancement_id": "spectrum:spectrum"
+        "advancement_id": "spectrum:collect_any_basic_shard"
       },
       "show_visualize_button": false,
       "multiblock_id": "spectrum:amethyst_geode",

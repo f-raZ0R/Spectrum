@@ -43,17 +43,20 @@ public class SpectrumBlockTags {
 	// TECHNICAL
 	public static final TagKey<Block> UNBREAKABLE_MOVABLE = of("technical/unbreakable_movable");
 
+	// WORLDGEN
+	public static final TagKey<Block> BASE_STONE_DEEPER_DOWN = of("base_stone_deeper_down");
+	public static final TagKey<Block> BLACKSLAG_ORE_REPLACEABLES = of("blackslag_ore_replaceables");
+	public static final TagKey<Block> DEEPER_DOWN_FEATURE_REPLACEABLES = of("deeper_down_feature_replaceables");
+
 	// MISC
 	public static final TagKey<Block> MULTITOOL_MINEABLE = of("multitool_mineable");
 	public static final TagKey<Block> BLACK_SLUDGE_BLOCKS = of("black_sludge_blocks");
 	public static final TagKey<Block> PRIMORDIAL_FIRE_BASE_BLOCKS = of("primordial_fire_base_blocks");
-	public static final TagKey<Block> BLACKSLAG_ORE_REPLACEABLES = of("blackslag_ore_replaceables");
 	public static final TagKey<Block> NATURES_STAFF_TICKABLE = of("natures_staff_tickable");
 	public static final TagKey<Block> NATURES_STAFF_STACKABLE = of("natures_staff_stackable");
 	public static final TagKey<Block> NATURES_STAFF_SPREADABLE = of("natures_staff_spreadable");
 	public static final TagKey<Block> BUILDING_STAFFS_BLACKLISTED = of("building_staffs_blacklisted");
 	public static final TagKey<Block> CRYSTAL_APOTHECARY_HARVESTABLE = of("crystal_apothecary_harvestable");
-	public static final TagKey<Block> BASE_STONE_DEEPER_DOWN = of("base_stone_deeper_down");
 	public static final TagKey<Block> UNBREAKABLE_STRUCTURE_BLOCKS = of("unbreakable_structure_blocks");
 	public static final TagKey<Block> INK_EFFECT_BLACKLISTED = of("ink_effect_blacklisted"); // blacklisting form block coloring, repairing, ...
 	public static final TagKey<Block> SPREADS_TO_BLACKSLAG = of("spreads_to_blackslag");

@@ -3,15 +3,14 @@ package de.dafuqs.spectrum.blocks.fluid;
 import de.dafuqs.spectrum.particle.*;
 import net.minecraft.block.*;
 import net.minecraft.entity.ai.pathing.*;
-import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.*;
 import net.minecraft.particle.*;
 import net.minecraft.registry.tag.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.*;
 import net.minecraft.world.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.*;
 
 public class MudFluidBlock extends SpectrumFluidBlock {
 	
@@ -47,7 +46,7 @@ public class MudFluidBlock extends SpectrumFluidBlock {
 			return Blocks.DIRT.getDefaultState();
 		}
 		if (otherState.isIn(FluidTags.LAVA)) {
-			return Blocks.COARSE_DIRT.getDefaultState();
+			return Blocks.MUD.getDefaultState();
 		}
 		return null;
 	}

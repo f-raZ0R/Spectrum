@@ -14,7 +14,7 @@
       "options": {
         "type": "spectrum:quartz_fluff"
       },
-      "probability": 0.028093334
+      "probability": 0.02
     },
     "mood_sound": {
       "sound": "spectrum:ambient.dimension_sounds",
@@ -23,7 +23,7 @@
       "offset": 2
     },
     "music": {
-      "sound": "spectrum:music.deeper_down",
+      "sound": "spectrum:music.deeper_down.razor_edge",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false

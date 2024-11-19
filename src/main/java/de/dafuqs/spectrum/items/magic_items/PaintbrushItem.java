@@ -1,7 +1,6 @@
 package de.dafuqs.spectrum.items.magic_items;
 
 import de.dafuqs.revelationary.api.advancements.*;
-import de.dafuqs.spectrum.*;
 import de.dafuqs.spectrum.api.block.*;
 import de.dafuqs.spectrum.api.energy.*;
 import de.dafuqs.spectrum.api.energy.color.*;
@@ -33,12 +32,9 @@ import java.util.*;
 
 public class PaintbrushItem extends Item implements SignChangingItem {
 	
-	public static final Identifier UNLOCK_COLORING_ADVANCEMENT_ID = SpectrumCommon.locate("collect_pigment");
-	public static final Identifier UNLOCK_INK_SLINGING_ADVANCEMENT_ID = SpectrumCommon.locate("midgame/fill_ink_container");
-	
 	public static final int COOLDOWN_DURATION_TICKS = 10;
 	public static final int BLOCK_COLOR_COST = 25;
-	public static final int INK_FLING_COST = 100;
+	public static final int INK_SLING_COST = 100;
 	
 	public static final String COLOR_NBT_STRING = "Color";
 	
@@ -46,19 +42,22 @@ public class PaintbrushItem extends Item implements SignChangingItem {
 		super(settings);
 	}
 	
-	@Environment(EnvType.CLIENT)
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 		super.appendTooltip(stack, world, tooltip, context);
 		
-		Optional<InkColor> color = getColor(stack);
-		boolean unlockedColoring = AdvancementHelper.hasAdvancementClient(UNLOCK_COLORING_ADVANCEMENT_ID);
-		boolean unlockedSlinging = AdvancementHelper.hasAdvancementClient(UNLOCK_INK_SLINGING_ADVANCEMENT_ID);
-		
+		if (world != null && world.isClient) {
+			appendClientTooltips(stack, tooltip);
+		}
+	}
+	
+	@Environment(EnvType.CLIENT)
+	private static void appendClientTooltips(ItemStack stack, List<Text> tooltip) {
+		boolean unlockedColoring = AdvancementHelper.hasAdvancementClient(SpectrumAdvancements.PAINTBRUSH_COLORING);
+		boolean unlockedSlinging = AdvancementHelper.hasAdvancementClient(SpectrumAdvancements.PAINTBRUSH_INK_SLINGING);
 		if (unlockedColoring || unlockedSlinging) {
-			if (color.isPresent()) {
-				tooltip.add(Text.translatable("spectrum.ink.color." + color.get()));
-			} else {
+			Optional<InkColor> color = getColor(stack);
+			if (color.isEmpty()) {
 				tooltip.add(Text.translatable("item.spectrum.paintbrush.tooltip.select_color"));
 			}
 		}
@@ -74,11 +73,11 @@ public class PaintbrushItem extends Item implements SignChangingItem {
 	}
 	
 	public static boolean canColor(PlayerEntity player) {
-		return AdvancementHelper.hasAdvancement(player, UNLOCK_COLORING_ADVANCEMENT_ID);
+		return AdvancementHelper.hasAdvancement(player, SpectrumAdvancements.PAINTBRUSH_COLORING);
 	}
 	
 	public static boolean canInkSling(PlayerEntity player) {
-		return AdvancementHelper.hasAdvancement(player, UNLOCK_INK_SLINGING_ADVANCEMENT_ID);
+		return AdvancementHelper.hasAdvancement(player, SpectrumAdvancements.PAINTBRUSH_INK_SLINGING);
 	}
 	
 	public NamedScreenHandlerFactory createScreenHandlerFactory(ItemStack itemStack) {
@@ -86,6 +85,19 @@ public class PaintbrushItem extends Item implements SignChangingItem {
 				new PaintbrushScreenHandler(syncId, inventory, itemStack),
 				Text.translatable("item.spectrum.paintbrush")
 		);
+	}
+	
+	@Override
+	public Text getName(ItemStack stack) {
+		Text name = Text.translatable(this.getTranslationKey(stack));
+		
+		Optional<InkColor> color = getColor(stack);
+		if (color.isPresent()) {
+			InkColor inkColor = color.get();
+			name = inkColor.getColoredName().append(" ").append(name);
+		}
+		
+		return name;
 	}
 	
 	public static void setColor(ItemStack stack, @Nullable InkColor color) {
@@ -195,15 +207,21 @@ public class PaintbrushItem extends Item implements SignChangingItem {
 			if (optionalInkColor.isPresent()) {
 				
 				InkColor inkColor = optionalInkColor.get();
-				if (user.isCreative() || InkPowered.tryDrainEnergy(user, inkColor, INK_FLING_COST)) {
+				if (user.isCreative() || InkPowered.tryDrainEnergy(user, inkColor, INK_SLING_COST)) {
 					user.getItemCooldownManager().set(this, COOLDOWN_DURATION_TICKS);
 					
 					if (!world.isClient) {
 						InkProjectileEntity.shoot(world, user, inkColor);
 					}
-					// cause the slightest bit of knockback
+					// cause the slightest bit of knockback (more if Red)
 					if (!user.isCreative()) {
-						causeKnockback(user, user.getYaw(), user.getPitch(), 0, 0.3F);
+						if(inkColor == InkColors.RED)
+						{
+							causeKnockback(user, user.getYaw(), user.getPitch(), 0.1F, 0.5F);
+						}
+						else{
+							causeKnockback(user, user.getYaw(), user.getPitch(), 0, 0.3F);
+						}
 					}
 				} else {
 					if (world.isClient) {

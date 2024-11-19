@@ -5,7 +5,7 @@
   "hide_while_locked": true,
   "condition": {
     "type": "modonomicon:advancement",
-    "advancement_id": "spectrum:spectrum"
+    "advancement_id": "spectrum:collect_any_basic_shard"
   },
   "parents": [
     {

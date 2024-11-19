@@ -3,6 +3,7 @@ package de.dafuqs.spectrum.api.energy;
 import de.dafuqs.revelationary.api.advancements.*;
 import de.dafuqs.spectrum.*;
 import de.dafuqs.spectrum.api.energy.color.*;
+import de.dafuqs.spectrum.compat.*;
 import de.dafuqs.spectrum.helpers.*;
 import de.dafuqs.spectrum.progression.*;
 import dev.emi.trinkets.api.*;
@@ -11,6 +12,7 @@ import net.minecraft.client.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraft.registry.*;
 import net.minecraft.server.network.*;
 import net.minecraft.text.*;
 import net.minecraft.util.*;
@@ -51,10 +53,10 @@ public interface InkPowered {
 			if (getUsedColors().size() > 1) {
 				tooltip.add(Text.translatable("spectrum.tooltip.ink_powered.prefix").formatted(Formatting.GRAY));
 				for (InkColor color : getUsedColors()) {
-					tooltip.add(color.getInkName().formatted(Formatting.GRAY));
+					tooltip.add(color.getColoredInkName().formatted(Formatting.GRAY));
 				}
 			} else {
-				tooltip.add(Text.translatable("spectrum.tooltip.ink_powered.consume", getUsedColors().get(0).getInkName()).formatted(Formatting.GRAY));
+				tooltip.add(Text.translatable("spectrum.tooltip.ink_powered.consume", getUsedColors().get(0).getColoredInkName()).formatted(Formatting.GRAY));
 			}
 		}
 	}
@@ -135,6 +137,10 @@ public interface InkPowered {
 		if (!canUse(player)) {
 			return false;
 		}
+		if(SpectrumIntegrationPacks.isIntegrationPackActive(SpectrumIntegrationPacks.MALUM_ID) && player.hasStatusEffect(Registries.STATUS_EFFECT.get(new Identifier("malum:silenced"))))
+		{
+			return false;
+		}
 		
 		// hands (main hand, too, if someone uses the staff from the offhand)
 		for (ItemStack itemStack : player.getHandItems()) {
@@ -204,6 +210,11 @@ public interface InkPowered {
 	
 	static boolean hasAvailableInk(PlayerEntity player, InkColor color, long amount) {
 		if (!canUse(player)) {
+			return false;
+		}
+
+		if(SpectrumIntegrationPacks.isIntegrationPackActive(SpectrumIntegrationPacks.MALUM_ID) && player.hasStatusEffect(Registries.STATUS_EFFECT.get(new Identifier("malum:silenced"))))
+		{
 			return false;
 		}
 		

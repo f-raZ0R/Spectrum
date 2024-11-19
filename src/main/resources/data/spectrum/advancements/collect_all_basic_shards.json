@@ -11,7 +11,7 @@
       "translate": "advancements.spectrum.collect_all_basic_shards.description"
     }
   },
-  "parent": "spectrum:spectrum",
+  "parent": "spectrum:collect_any_basic_shard",
   "criteria": {
     "has_amethyst_shard": {
       "trigger": "revelationary:advancement_gotten",
@@ -34,7 +34,7 @@
     "gotten_previous": {
       "trigger": "revelationary:advancement_gotten",
       "conditions": {
-        "advancement_identifier": "spectrum:spectrum"
+        "advancement_identifier": "spectrum:collect_any_basic_shard"
       }
     }
   }

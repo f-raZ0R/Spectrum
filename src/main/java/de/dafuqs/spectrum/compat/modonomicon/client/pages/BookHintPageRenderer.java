@@ -221,7 +221,7 @@ public class BookHintPageRenderer extends BookPageRenderer<BookHintPage> impleme
             this.parentScreen.renderComponentHoverEffect(drawContext, style, mouseX, mouseY);
 
         if (revealProgress == -1) {
-            parentScreen.renderIngredient(drawContext, BookContentScreen.PAGE_WIDTH / 2 + 23, BookContentScreen.PAGE_HEIGHT - 3, mouseX, mouseY, page.getCost());
+            parentScreen.renderIngredient(drawContext, BookContentScreen.PAGE_WIDTH / 2 + 29, BookContentScreen.PAGE_HEIGHT - 3, mouseX, mouseY, page.getCost());
         }
 
         if (revealProgress > 0) {

@@ -5,8 +5,11 @@ import de.dafuqs.spectrum.compat.ae2.*;
 import de.dafuqs.spectrum.compat.alloy_forgery.*;
 import de.dafuqs.spectrum.compat.botania.*;
 import de.dafuqs.spectrum.compat.create.*;
+import de.dafuqs.spectrum.compat.farmersdelight.*;
 import de.dafuqs.spectrum.compat.gobber.*;
+import de.dafuqs.spectrum.compat.malum.*;
 import de.dafuqs.spectrum.compat.modonomicon.*;
+import de.dafuqs.spectrum.compat.neepmeat.*;
 import de.dafuqs.spectrum.compat.travelersbackpack.*;
 import net.fabricmc.api.*;
 import net.fabricmc.loader.api.*;
@@ -38,16 +41,24 @@ public class SpectrumIntegrationPacks {
 	public static final String BOTANIA_ID = "botania";
 	public static final String MODONOMICON_ID = "modonomicon";
 	public static final String CREATE_ID = "create";
+	public static final String FARMERSDELIGHT_ID = "farmersdelight";
+	public static final String NEEPMEAT_ID = "neepmeat";
+	public static final String MALUM_ID = "malum";
 
 	@SuppressWarnings("Convert2MethodRef")
 	public static void register() {
 		registerIntegrationPack(AE2_ID, () -> new AE2Compat());
 		registerIntegrationPack(GOBBER_ID, () -> new GobberCompat());
 		registerIntegrationPack(ALLOY_FORGERY_ID, () -> new AlloyForgeryCompat());
-		registerIntegrationPack(TRAVELERS_BACKPACK_ID, () -> new TravelersBackpackCompat());
 		registerIntegrationPack(BOTANIA_ID, () -> new BotaniaCompat());
 		registerIntegrationPack(MODONOMICON_ID, () -> new ModonomiconCompat());
-		registerIntegrationPack(CREATE_ID, () -> new CreateCompat());
+		registerIntegrationPack(NEEPMEAT_ID, () -> new NEEPMeatCompat());
+		registerIntegrationPack(FARMERSDELIGHT_ID, () -> new FDCompat());
+		registerIntegrationPack(MALUM_ID, () -> new MalumCompat());
+		if (!FabricLoader.getInstance().isModLoaded("connectormod")) {
+			registerIntegrationPack(TRAVELERS_BACKPACK_ID, () -> new TravelersBackpackCompat());
+			registerIntegrationPack(CREATE_ID, () -> new CreateCompat());
+		}
 		
 		for (ModIntegrationPack container : INTEGRATION_PACKS.values()) {
 			container.register();

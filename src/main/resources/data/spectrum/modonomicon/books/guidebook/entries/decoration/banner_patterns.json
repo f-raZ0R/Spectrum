@@ -3,7 +3,7 @@
   "icon": "spectrum:amethyst_shard_banner_pattern",
   "condition": {
     "type": "modonomicon:advancement",
-    "advancement_id": "spectrum:spectrum"
+    "advancement_id": "spectrum:collect_any_basic_shard"
   },
   "category": "spectrum:decoration",
   "hide_while_locked": true,

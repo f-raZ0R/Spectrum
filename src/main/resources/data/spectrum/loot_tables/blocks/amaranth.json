@@ -11,6 +11,15 @@
             {
               "type": "minecraft:item",
               "name": "spectrum:amaranth_bushel",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "spectrum:amaranth",
+                  "properties": {
+                    "age": "7"
+                  }
+                }
+              ],
               "functions": [
                 {
                   "function": "minecraft:set_count",
@@ -28,16 +37,12 @@
                     "probability": 0.5714286
                   }
                 }
-              ],
-              "conditions": [
-                {
-                  "condition": "minecraft:block_state_property",
-                  "block": "spectrum:amaranth",
-                  "properties": {
-                    "age": "7"
-                  }
-                }
               ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "spectrum:amaranth_grains",
+              "count": 1
             }
           ]
         }

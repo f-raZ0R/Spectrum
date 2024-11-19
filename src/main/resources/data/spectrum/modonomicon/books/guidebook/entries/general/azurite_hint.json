@@ -1,5 +1,6 @@
 {
-  "name": "book.spectrum.guidebook.hints.a_new_ore",
+  "name": "book.spectrum.guidebook.idea",
+  "description": "book.spectrum.guidebook.ideas.a_new_ore",
   "category": "spectrum:general",
   "hide_while_locked": true,
   "parents": [],
@@ -7,7 +8,7 @@
   "background_v_index": 5,
   "x": 12,
   "y": -4,
-  "icon": "minecraft:writable_book",
+  "icon": "spectrum:textures/gui/guidebook/icons/idea.png",
   "condition": {
     "type": "modonomicon:advancement",
     "advancement_id": "spectrum:milestones/reveal_azurite"
@@ -17,22 +18,22 @@
   "pages": [
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.where_to_find",
+      "title": "book.spectrum.guidebook.ideas.where_to_find",
       "completion_advancement": "spectrum:triggers/hints/azurite_page0",
       "cost": {
         "item": "spectrum:neolith",
         "count": 8
       },
-      "text": "book.spectrum.guidebook.hints.azurite.page0.text"
+      "text": "book.spectrum.guidebook.ideas.azurite.page0.text"
     },
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.concise_instructions",
+      "title": "book.spectrum.guidebook.ideas.concise_instructions",
       "cost": {
         "item": "spectrum:neolith",
         "count": 24
       },
-      "text": "book.spectrum.guidebook.hints.azurite.page1.text",
+      "text": "book.spectrum.guidebook.ideas.azurite.page1.text",
       "completion_advancement": "spectrum:triggers/hints/azurite_page1"
     }
   ]

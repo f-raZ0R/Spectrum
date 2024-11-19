@@ -1,6 +1,6 @@
 {
   "name": "book.spectrum.guidebook.mod_integration.biomemakeover.name",
-  "icon": "biomemakeover:antidote",
+  "icon": "biomemakeover:bm_icon",
   "condition": {
     "type": "modonomicon:and",
     "children": [

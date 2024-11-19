@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(FoxEntity.class)
 public class FoxEntityMixin {
 
-    @ModifyReturnValue(method = "isSleeping", at = @At("RETURN"))
+    @ModifyReturnValue(method = "isSleeping()Z", at = @At("RETURN"))
     public boolean spectrum$forceFoxSleepingState(boolean original) {
         if (original)
             return true;

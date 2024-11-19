@@ -42,6 +42,10 @@
     },
     {
       "type": "spectrum:snippet",
+      "condition": {
+        "type": "modonomicon:advancement",
+        "advancement_id": "spectrum:remember_kindling"
+      },
       "resource_path": "spectrum:textures/gui/guidebook/kindlings.png",
       "resource_width": 100,
       "resource_height": 150,
@@ -55,10 +59,10 @@
       "type": "modonomicon:text",
       "condition": {
         "type": "modonomicon:advancement",
-        "advancement_id": "spectrum:hidden/status_effects/somnolence"
+        "advancement_id": "spectrum:hidden/unlock_explard_hint"
       },
-      "title": "book.spectrum.guidebook.kindlings.page4.title",
-      "text": "book.spectrum.guidebook.kindlings.page4.text"
+      "title": "book.spectrum.guidebook.kindlings.page3.title",
+      "text": "book.spectrum.guidebook.kindlings.page3.text"
     }
   ]
 }

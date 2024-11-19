@@ -55,6 +55,15 @@
       "type": "spectrum:pedestal_crafting",
       "condition": {
         "type": "modonomicon:advancement",
+        "advancement_id": "spectrum:collect_amaranth_bushel"
+      },
+      "recipe_id": "spectrum:pedestal/tier1/vanilla/packed_mud",
+      "text": "book.spectrum.guidebook.amaranth.packed_mud.text"
+    },
+    {
+      "type": "spectrum:pedestal_crafting",
+      "condition": {
+        "type": "modonomicon:advancement",
         "advancement_id": "spectrum:unlocks/food/triple_meat_pot_pie"
       },
       "title": "item.spectrum.triple_meat_pot_pie",

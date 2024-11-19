@@ -4,6 +4,7 @@
     "icon": {
       "item": "spectrum:effulgent_feather"
     },
+    "hidden": true,
     "title": {
       "translate": "advancements.spectrum.pluck_effulgent_feather.title"
     },

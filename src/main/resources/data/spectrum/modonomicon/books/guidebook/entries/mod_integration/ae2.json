@@ -60,6 +60,39 @@
       "text": "book.spectrum.guidebook.mod_integration.ae2.page3.text"
     },
     {
+      "type": "spectrum:collection",
+      "condition": {
+        "type": "modonomicon:advancement",
+        "advancement_id": "spectrum:unlocks/blocks/crystallarieum"
+      },
+      "title": "book.spectrum.guidebook.mod_integration.ae2.pure_resources.title",
+      "items": [
+        "spectrum:small_certus_quartz_bud",
+        "spectrum:large_certus_quartz_bud",
+        "spectrum:certus_quartz_cluster",
+        "spectrum:pure_certus_quartz_block",
+        "spectrum:pure_certus_quartz",
+        "spectrum:small_fluix_bud",
+        "spectrum:large_fluix_bud",
+        "spectrum:fluix_cluster",
+        "spectrum:pure_fluix_block",
+        "spectrum:pure_fluix"
+      ],
+      "text": "book.spectrum.guidebook.mod_integration.ae2.pure_resources.text"
+    },
+    {
+      "type": "spectrum:crystallarieum_growing",
+      "title": "book.spectrum.guidebook.mod_integration.ae2.pure_certus_quartz_growing.title",
+      "text": "book.spectrum.guidebook.mod_integration.ae2.pure_certus_quartz_growing.text",
+      "recipe_id": "spectrum:mod_integration/ae2/crystallarieum/certus_quartz_crystal"
+    },
+    {
+      "type": "spectrum:crystallarieum_growing",
+      "title": "book.spectrum.guidebook.mod_integration.ae2.pure_fluix_crystal_growing.title",
+      "text": "book.spectrum.guidebook.mod_integration.ae2.pure_fluix_crystal_growing.text",
+      "recipe_id": "spectrum:mod_integration/ae2/crystallarieum/fluix_crystal"
+    },
+    {
       "type": "spectrum:anvil_crushing",
       "title": "container.spectrum.rei.anvil_crushing.title",
       "recipe_id": "spectrum:mod_integration/ae2/anvil_crushing/certus_quartz_dust",
@@ -75,12 +108,6 @@
       "text": "book.spectrum.guidebook.mod_integration.ae2.page6.text",
       "title": "container.spectrum.rei.anvil_crushing.title",
       "recipe_id": "spectrum:mod_integration/ae2/fusion_shrine/fluix_crystal"
-    },
-    {
-      "type": "spectrum:crystallarieum_growing",
-      "text": "book.spectrum.guidebook.mod_integration.ae2.page7.text",
-      "title": "book.spectrum.guidebook.mod_integration.ae2.page7.title",
-      "recipe_id": "spectrum:mod_integration/ae2/crystallarieum/certus_quartz_crystal"
     },
     {
       "type": "spectrum:cinderhearth_smelting",

@@ -1,5 +1,11 @@
 package de.dafuqs.spectrum.commands;
 
+import com.klikli_dev.modonomicon.book.*;
+import com.klikli_dev.modonomicon.book.conditions.*;
+import com.klikli_dev.modonomicon.book.conditions.context.*;
+import com.klikli_dev.modonomicon.book.entries.*;
+import com.klikli_dev.modonomicon.book.page.*;
+import com.klikli_dev.modonomicon.data.*;
 import com.mojang.brigadier.arguments.*;
 import com.mojang.brigadier.tree.*;
 import de.dafuqs.revelationary.*;
@@ -165,7 +171,7 @@ public class SanityCommand {
 		
 		// Items / Blocks without a translation
 		for (Map.Entry<RegistryKey<Item>, Item> item : Registries.ITEM.getEntrySet()) {
-			if (!Registries.ITEM.getId(item.getValue()).getNamespace().equals(SpectrumCommon.MOD_ID)) {
+			if (!Registries.ITEM.getId(item.getValue()).getNamespace().equals(modId)) {
 				continue;
 			}
 			
@@ -179,7 +185,7 @@ public class SanityCommand {
 			}
 		}
 		
-		// recipe groups without localisation
+		// recipe groups without localization
 		Set<String> recipeGroups = new HashSet<>();
 		recipeManager.keys().forEach(identifier -> {
 			Optional<? extends Recipe<?>> recipe = recipeManager.get(identifier);
@@ -414,7 +420,21 @@ public class SanityCommand {
 			}
 		}
 		
-
+		// Guidebook entries/pages that may be un-unlockable
+		Book book = BookDataManager.get().getBook(GuidebookItem.GUIDEBOOK_ID);
+		for (Map.Entry<Identifier, BookEntry> entry : book.getEntries().entrySet()) {
+			BookCondition condition = entry.getValue().getCondition();
+			BookConditionContext context = new BookConditionCategoryContext(book, entry.getValue().getCategory());
+			if (!condition.test(context, source.getPlayer())) {
+				SpectrumCommon.logWarning("[SANITY: Guidebook] Entry '" + entry.getKey() + "' is still locked for the executing player. Does the player have the required advancements? Can it be unlocked?");
+			}
+			for (BookPage page : entry.getValue().getPages()) {
+				if (!page.getCondition().test(context, source.getPlayer())) {
+					SpectrumCommon.logWarning("[SANITY: Guidebook] Entry " + entry.getKey() + " page " + page.getPageNumber() + "' is still locked for the executing player. Does the player have the required advancements? Can it be unlocked?");
+				}
+			}
+		}
+		
 		SpectrumCommon.logInfo("##### SANITY CHECK FINISHED ######");
 
 		SpectrumCommon.logInfo("##### SANITY CHECK PEDESTAL RECIPE STATISTICS ######");

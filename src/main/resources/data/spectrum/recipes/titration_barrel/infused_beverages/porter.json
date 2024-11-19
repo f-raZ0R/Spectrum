@@ -4,11 +4,11 @@
   "ingredients": [
     {
       "item": "minecraft:wheat",
-      "count": 6
+      "count": 3
     },
     {
       "item": "minecraft:wheat_seeds",
-      "count": 3
+      "count": 2
     },
     {
       "item": "minecraft:beetroot",

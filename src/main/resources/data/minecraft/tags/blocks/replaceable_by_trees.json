@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "spectrum:bristle_sprouts",
+    "spectrum:wand_light",
+
+    "spectrum:liquid_crystal",
+    "spectrum:mud"
+  ]
+}

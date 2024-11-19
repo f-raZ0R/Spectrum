@@ -63,7 +63,7 @@
       },
       "show_visualize_button": true,
       "multiblock_id": "spectrum:alloy_forgery/blackslag_alloy_forge",
-      "multiblock_name": "multiblock.spectrum.alloy_forgery.calcite_alloy_forge"
+			"multiblock_name": "multiblock.spectrum.alloy_forgery.blackslag_alloy_forge"
     },
     {
       "type": "spectrum:pedestal_crafting",

@@ -10,7 +10,7 @@
       "translate": "advancements.spectrum.place_pedestal.description"
     }
   },
-  "parent": "spectrum:spectrum",
+  "parent": "spectrum:collect_any_basic_shard",
   "criteria": {
     "interact_with_existing_pedestal": {
       "trigger": "minecraft:item_used_on_block",
@@ -110,7 +110,7 @@
     "gotten_previous": {
       "trigger": "revelationary:advancement_gotten",
       "conditions": {
-        "advancement_identifier": "spectrum:spectrum"
+        "advancement_identifier": "spectrum:collect_any_basic_shard"
       }
     }
   },

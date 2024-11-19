@@ -1,5 +1,6 @@
 {
-  "name": "book.spectrum.guidebook.hints.a_new_resource",
+  "name": "book.spectrum.guidebook.idea",
+  "description": "book.spectrum.guidebook.ideas.a_new_resource",
   "category": "spectrum:general",
   "hide_while_locked": true,
   "parents": [],
@@ -7,7 +8,7 @@
   "background_v_index": 5,
   "x": 15,
   "y": -1,
-  "icon": "minecraft:writable_book",
+  "icon": "spectrum:textures/gui/guidebook/icons/idea.png",
   "condition": {
     "type": "modonomicon:advancement",
     "advancement_id": "spectrum:midgame/create_midnight_aberration"
@@ -17,23 +18,23 @@
   "pages": [
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.midnight_chip.page0.title",
+      "title": "book.spectrum.guidebook.ideas.midnight_chip.page0.title",
       "completion_advancement": "spectrum:triggers/hints/midnight_chip_page0",
       "cost": {
         "item": "spectrum:neolith",
         "count": 8
       },
-      "text": "book.spectrum.guidebook.hints.midnight_chip.page0.text"
+      "text": "book.spectrum.guidebook.ideas.midnight_chip.page0.text"
     },
     {
       "type": "spectrum:hint",
-      "title": "book.spectrum.guidebook.hints.concise_instructions",
+      "title": "book.spectrum.guidebook.ideas.concise_instructions",
       "completion_advancement": "spectrum:triggers/hints/midnight_chip_page1",
       "cost": {
         "item": "spectrum:neolith",
         "count": 24
       },
-      "text": "book.spectrum.guidebook.hints.midnight_chip.page1.text"
+      "text": "book.spectrum.guidebook.ideas.midnight_chip.page1.text"
     }
   ]
 }

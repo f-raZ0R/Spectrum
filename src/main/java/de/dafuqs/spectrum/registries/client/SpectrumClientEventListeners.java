@@ -106,6 +106,7 @@ public class SpectrumClientEventListeners {
 			Entity cameraEntity = client.getCameraEntity();
 			if (world == null || cameraEntity == null) {
 				BiomeAttenuatingSoundInstance.clear();
+				BlockAuraSoundInstance.clear();
 				return;
 			}
 			
@@ -113,9 +114,6 @@ public class SpectrumClientEventListeners {
 
 			HowlingSpireEffects.clientTick(world, cameraEntity, biome);
 			DarknessEffects.clientTick(world, (LivingEntity) cameraEntity, biome);
-
-			if (SpectrumBlocks.AZURITE_ORE.isVisibleTo(ShapeContext.of(cameraEntity)) && world.getTime() % CrystalAuraSoundInstance.getTickTime() == 0)
-				CrystalAuraSoundInstance.update(world, cameraEntity);
 		});
 	}
 	

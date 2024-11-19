@@ -70,8 +70,8 @@ public class SpectrumSkullBlockEntityRenderer implements BlockEntityRenderer<Spe
         builder.put(SpectrumSkullType.IRON_GOLEM, new Pair<>(new IronGolemHeadModel(modelLoader.getModelPart(SpectrumModelLayers.IRON_GOLEM_HEAD)), new Identifier("textures/entity/iron_golem/iron_golem.png")));
         builder.put(SpectrumSkullType.LLAMA, new Pair<>(new LlamaHeadModel(modelLoader.getModelPart(SpectrumModelLayers.LLAMA_HEAD)), new Identifier("textures/entity/llama/gray.png")));
         builder.put(SpectrumSkullType.MAGMA_CUBE, new Pair<>(new SlimeHeadModel(modelLoader.getModelPart(SpectrumModelLayers.MAGMA_CUBE_HEAD)), new Identifier("textures/entity/slime/magmacube.png")));
-        builder.put(SpectrumSkullType.MOOSHROOM_BROWN, new Pair<>(new CowHeadModel(modelLoader.getModelPart(SpectrumModelLayers.MOOSHROOM_BROWN_HEAD)), new Identifier("textures/entity/cow/red_mooshroom.png")));
-        builder.put(SpectrumSkullType.MOOSHROOM_RED, new Pair<>(new CowHeadModel(modelLoader.getModelPart(SpectrumModelLayers.MOOSHROOM_RED_HEAD)), new Identifier("textures/entity/cow/brown_mooshroom.png")));
+        builder.put(SpectrumSkullType.MOOSHROOM_BROWN, new Pair<>(new CowHeadModel(modelLoader.getModelPart(SpectrumModelLayers.MOOSHROOM_BROWN_HEAD)), new Identifier("textures/entity/cow/brown_mooshroom.png")));
+        builder.put(SpectrumSkullType.MOOSHROOM_RED, new Pair<>(new CowHeadModel(modelLoader.getModelPart(SpectrumModelLayers.MOOSHROOM_RED_HEAD)), new Identifier("textures/entity/cow/red_mooshroom.png")));
         builder.put(SpectrumSkullType.MULE, new Pair<>(new HorseHeadModel(modelLoader.getModelPart(SpectrumModelLayers.MULE_HEAD)), new Identifier("textures/entity/horse/mule.png")));
         builder.put(SpectrumSkullType.OCELOT, new Pair<>(new CatHeadModel(modelLoader.getModelPart(SpectrumModelLayers.OCELOT_HEAD)), new Identifier("textures/entity/cat/ocelot.png")));
         builder.put(SpectrumSkullType.PANDA, new Pair<>(new PandaHeadModel(modelLoader.getModelPart(SpectrumModelLayers.PANDA_HEAD)), new Identifier("textures/entity/panda/panda.png"))); // pandas have variants

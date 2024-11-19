@@ -8,97 +8,96 @@ import net.minecraft.particle.*;
 import net.minecraft.util.math.*;
 import org.joml.*;
 
-import java.lang.*;
 import java.lang.Math;
 
 @Environment(EnvType.CLIENT)
 public class AzureAuraParticle extends AbstractSlowingParticle {
-
+	
 	private final float alphaMult;
 	private float length;
-
+	
 	protected AzureAuraParticle(ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
 		super(clientWorld, x, y, z, velocityX, velocityY, velocityZ);
 		this.maxAge = 160 + random.nextInt(140);
 		this.scale = 0.3F;
-		this.length = 2 + random.nextFloat() * 2;
-		this.scale += length / 14F;
+		var thisLength = 2 + random.nextFloat() * 2;
+		this.scale += thisLength / 14F;
 		this.scale *= random.nextFloat() * 0.75F + 0.25F;
-		this.length *= random.nextFloat() * 0.75F + 0.25F;
+		this.length = thisLength * (random.nextFloat() * 0.75F + 0.25F);
 		this.velocityY += this.length / 100;
 		this.alpha = 0;
 		this.collidesWithWorld = false;
-
+		
 		this.alphaMult = random.nextFloat() * 0.5F + 0.5F;
-
+		
 		this.blue = 1F;
 		this.red = 0.15F * random.nextFloat();
 		this.green = 0.3F + random.nextFloat() * 0.55F;
 		this.velocityMultiplier = 1;
 	}
-
+	
 	@Override
 	public void tick() {
 		adjustAlpha();
 		super.tick();
 	}
-
+	
 	private void adjustAlpha() {
 		var pos = BlockPos.ofFloored(x, y, z);
 		if (age <= 20) {
 			alpha = MathHelper.clamp(age / 20F, 0, alphaMult);
 			return;
 		}
-
+		
 		var fadeMarker = Math.min(maxAge / 5 * 2, 40);
-		var ageFade = MathHelper.clamp(Math.min(maxAge - age, fadeMarker) / (float) fadeMarker, 0, alphaMult);;
-
+		var ageFade = MathHelper.clamp(Math.min(maxAge - age, fadeMarker) / (float) fadeMarker, 0, alphaMult);
+		
 		if (ageFade < alphaMult) {
 			alpha = Math.min(alpha, ageFade);
-		}
-		else if (!world.getBlockState(pos).isTransparent(world, pos)) {
+		} else if (!world.getBlockState(pos).isTransparent(world, pos)) {
 			alpha = MathHelper.clamp(alpha - 0.06F, alphaMult / 10, alphaMult);
-		}
-		else {
+		} else {
 			alpha = MathHelper.clamp(alpha + 0.0325F, 0F, alphaMult);
 		}
-
-
+		
+		
 		if (alpha < 0.01F) {
 			markDead();
 		}
 	}
-
+	
 	// Mildly cursed
+	// Dafuqs: Update: Majorly cursed
+	// Mostly uncursed by Pizzer
 	public void buildGeometry(VertexConsumer vertexConsumer, Camera camera, float tickDelta) {
-		Vec3d vec3d = camera.getPos();
-		float f = (float) (MathHelper.lerp(tickDelta, this.prevPosX, this.x) - vec3d.getX());
-		float g = (float) (MathHelper.lerp(tickDelta, this.prevPosY, this.y) - vec3d.getY());
-		float h = (float) (MathHelper.lerp(tickDelta, this.prevPosZ, this.z) - vec3d.getZ());
-		var xOffset = x - camera.getPos().x;
-		var zOffset = z - camera.getPos().z;
+		final Vec3d cameraPos = camera.getPos();
+		final float xOff = (float) (MathHelper.lerp(tickDelta, this.prevPosX, this.x) - cameraPos.getX());
+		final float yOff = (float) (MathHelper.lerp(tickDelta, this.prevPosY, this.y) - cameraPos.getY());
+		final float zOff = (float) (MathHelper.lerp(tickDelta, this.prevPosZ, this.z) - cameraPos.getZ());
+		final float size = this.getSize(tickDelta);
 
-		Quaternionf quaternionf = RotationAxis.POSITIVE_Y.rotation((float) MathHelper.atan2(xOffset, zOffset));
+		final float rot = (float) MathHelper.atan2(xOff, zOff);
+		final float sin = org.joml.Math.sin(rot);
+		final float cos = org.joml.Math.cosFromSin(sin, rot);
 
-		Vector3f[] vector3fs = new Vector3f[]{new Vector3f(-1.0F, -length, 0.0F), new Vector3f(-1.0F, length, 0.0F), new Vector3f(1.0F, length, 0.0F), new Vector3f(1.0F, -length, 0.0F)};
-		float i = this.getSize(tickDelta);
+		final float negX = Math.fma(-cos,    size, xOff);
+		final float posX = Math.fma( cos,    size, xOff);
 
-		for (int j = 0; j < 4; ++j) {
-			Vector3f vector3f = vector3fs[j];
-			vector3f.rotate(quaternionf);
-			vector3f.mul(i);
-			vector3f.add(f, g, h);
-		}
+		final float negY = Math.fma(-length, size, yOff);
+		final float posY = Math.fma( length, size, yOff);
 
-		float k = this.getMinU();
-		float l = this.getMaxU();
-		float m = this.getMinV();
-		float n = this.getMaxV();
-		int o = this.getBrightness(tickDelta);
-		vertexConsumer.vertex(vector3fs[0].x(), (double) vector3fs[0].y(), (double) vector3fs[0].z()).texture(l, n).color(this.red, this.green, this.blue, 0).light(o).next();
-		vertexConsumer.vertex(vector3fs[1].x(), (double) vector3fs[1].y(), (double) vector3fs[1].z()).texture(l, m).color(this.red, this.green, this.blue, this.alpha).light(o).next();
-		vertexConsumer.vertex(vector3fs[2].x(), (double) vector3fs[2].y(), (double) vector3fs[2].z()).texture(k, m).color(this.red, this.green, this.blue, this.alpha).light(o).next();
-		vertexConsumer.vertex(vector3fs[3].x(), (double) vector3fs[3].y(), (double) vector3fs[3].z()).texture(k, n).color(this.red, this.green, this.blue, 0).light(o).next();
+		final float negZ = Math.fma(-sin,    size, zOff);
+		final float posZ = Math.fma( sin,    size, zOff);
+
+		final float minU = this.getMinU();
+		final float maxU = this.getMaxU();
+		final float minV = this.getMinV();
+		final float maxV = this.getMaxV();
+		final int   brightness = this.getBrightness(tickDelta);
+		vertexConsumer.vertex(negX, negY, posZ).texture(maxU, maxV).color(this.red, this.green, this.blue, 0).light(brightness).next();
+		vertexConsumer.vertex(negX, posY, posZ).texture(maxU, minV).color(this.red, this.green, this.blue, this.alpha).light(brightness).next();
+		vertexConsumer.vertex(posX, posY, negZ).texture(minU, minV).color(this.red, this.green, this.blue, this.alpha).light(brightness).next();
+		vertexConsumer.vertex(posX, negY, negZ).texture(minU, maxV).color(this.red, this.green, this.blue, 0).light(brightness).next();
 	}
 	
 	@Override

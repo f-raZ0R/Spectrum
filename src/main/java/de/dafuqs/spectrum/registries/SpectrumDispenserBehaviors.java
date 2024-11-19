@@ -1,5 +1,7 @@
 package de.dafuqs.spectrum.registries;
 
+import de.dafuqs.spectrum.api.energy.*;
+import de.dafuqs.spectrum.api.item.*;
 import de.dafuqs.spectrum.blocks.bottomless_bundle.*;
 import de.dafuqs.spectrum.blocks.mob_head.*;
 import de.dafuqs.spectrum.blocks.shooting_star.*;
@@ -7,10 +9,13 @@ import de.dafuqs.spectrum.entity.entity.*;
 import de.dafuqs.spectrum.items.tools.*;
 import net.minecraft.block.*;
 import net.minecraft.block.dispenser.*;
+import net.minecraft.entity.effect.*;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.item.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
+
+import java.util.*;
 
 public class SpectrumDispenserBehaviors {
 	
@@ -69,6 +74,36 @@ public class SpectrumDispenserBehaviors {
 		DispenserBlock.registerBehavior(SpectrumItems.BOTTLE_OF_DECAY_AWAY, blockPlacementDispenserBehavior);
 		
 		DispenserBlock.registerBehavior(SpectrumItems.PRIMORDIAL_LIGHTER, PrimordialLighterItem.DISPENSER_BEHAVIOR);
+		
+		DispenserBlock.registerBehavior(SpectrumItems.AZURITE_GLASS_AMPOULE, new DispenserBehavior() {
+			@Override
+			public ItemStack dispense(BlockPointer pointer, ItemStack stack) {
+				LightShardEntity.summonBarrage(pointer.getWorld(), null, null, LightShardBaseEntity.EVERYTHING_TARGET, pointer.getPos().toCenterPos(), LightShardBaseEntity.DEFAULT_COUNT_PROVIDER);
+				stack.decrement(1);
+				return stack;
+			}
+		});
+		DispenserBlock.registerBehavior(SpectrumItems.MALACHITE_GLASS_AMPOULE, new DispenserBehavior() {
+			@Override
+			public ItemStack dispense(BlockPointer pointer, ItemStack stack) {
+				List<StatusEffectInstance> effects = new ArrayList<>();
+				List<InkPoweredStatusEffectInstance> inkPoweredStatusEffectInstances = InkPoweredPotionFillable.getEffects(stack);
+				for (InkPoweredStatusEffectInstance effect : inkPoweredStatusEffectInstances) {
+					effects.add(effect.getStatusEffectInstance());
+				}
+				LightMineEntity.summonBarrage(pointer.getWorld(), null, null, LightShardBaseEntity.EVERYTHING_TARGET, effects, pointer.getPos().toCenterPos(), LightShardBaseEntity.DEFAULT_COUNT_PROVIDER);
+				stack.decrement(1);
+				return stack;
+			}
+		});
+		DispenserBlock.registerBehavior(SpectrumItems.BLOODSTONE_GLASS_AMPOULE, new DispenserBehavior() {
+			@Override
+			public ItemStack dispense(BlockPointer pointer, ItemStack stack) {
+				LightSpearEntity.summonBarrage(pointer.getWorld(), null, null, LightShardBaseEntity.EVERYTHING_TARGET, pointer.getPos().toCenterPos(), LightShardBaseEntity.DEFAULT_COUNT_PROVIDER);
+				stack.decrement(1);
+				return stack;
+			}
+		});
 	}
 	
 }

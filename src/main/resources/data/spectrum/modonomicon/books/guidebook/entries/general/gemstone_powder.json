@@ -1,5 +1,6 @@
 {
   "name": "book.spectrum.guidebook.gemstone_powder.name",
+  "description": "book.spectrum.guidebook.gemstone_powder.description",
   "icon": "spectrum:amethyst_powder",
   "condition": {
     "type": "modonomicon:advancement",

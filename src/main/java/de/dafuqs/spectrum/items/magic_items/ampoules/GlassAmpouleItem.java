@@ -24,7 +24,7 @@ public class GlassAmpouleItem extends BaseGlassAmpouleItem {
 		World world = attacker.getWorld();
         if (!world.isClient) {
             world.playSound(null, attacker.getBlockPos(), SpectrumSoundEvents.LIGHT_CRYSTAL_RING, SoundCategory.PLAYERS, 0.35F, 0.9F + attacker.getRandom().nextFloat() * 0.334F);
-            LightShardEntity.summonBarrage(attacker.getWorld(), attacker, target);
+			LightShardEntity.summonBarrage(attacker.getWorld(), attacker, target, LightShardBaseEntity.MONSTER_TARGET);
         }
         return true;
     }

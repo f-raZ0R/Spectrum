@@ -2,7 +2,7 @@
   "name": "book.spectrum.guidebook.block_variants.name",
   "condition": {
     "type": "modonomicon:advancement",
-    "advancement_id": "spectrum:spectrum"
+    "advancement_id": "spectrum:collect_any_basic_shard"
   },
   "icon": "spectrum:chiseled_polished_basalt",
   "category": "spectrum:decoration",
@@ -82,7 +82,13 @@
         "spectrum:calcite_tile_slab",
         "spectrum:basalt_tile_slab",
         "spectrum:planed_calcite",
-        "spectrum:planed_basalt"
+        "spectrum:planed_calcite_slab",
+        "spectrum:planed_calcite_stairs",
+        "spectrum:planed_calcite_wall",
+        "spectrum:planed_basalt",
+        "spectrum:planed_basalt_slab",
+        "spectrum:planed_basalt_stairs",
+        "spectrum:planed_basalt_wall"
       ]
     },
     {

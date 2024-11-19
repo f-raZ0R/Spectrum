@@ -11,7 +11,7 @@
     },
     "hidden": true
   },
-  "parent": "spectrum:place_pedestal",
+  "parent": "spectrum:spectrum",
   "criteria": {
     "has_nightdew_sprout": {
       "trigger": "minecraft:inventory_changed",
@@ -28,7 +28,7 @@
     "gotten_previous": {
       "trigger": "revelationary:advancement_gotten",
       "conditions": {
-        "advancement_identifier": "spectrum:place_pedestal"
+        "advancement_identifier": "spectrum:spectrum"
       }
     }
   }
