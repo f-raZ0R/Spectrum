@@ -254,6 +254,10 @@ public class SpectrumItemGroups {
 				entries.add(SpectrumBlocks.ENDER_HOPPER);
 				entries.add(SpectrumBlocks.ENDER_DROPPER);
 				
+				entries.add(SpectrumBlocks.SCENTED_CANDLE);
+				entries.add(SpectrumBlocks.ALLURING_CANDLE);
+				entries.add(SpectrumBlocks.SOPORIFIC_CANDLE);
+				
 				entries.add(SpectrumBlocks.PARTICLE_SPAWNER);
 				
 				entries.add(SpectrumBlocks.GLISTERING_MELON);
