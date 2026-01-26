@@ -402,6 +402,7 @@ import static net.minecraft.world.level.block.Blocks.BROWN_WOOL;
 import static net.minecraft.world.level.block.Blocks.litBlockEmission;
 import static net.minecraft.world.level.block.Blocks.woodenButton;
 
+//why does github require me to make an entire PR just to get upstream into my repo
 @SuppressWarnings({"unused"})
 public class PastelBlocks {
 
